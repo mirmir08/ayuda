@@ -1,0 +1,211 @@
+/* Card */
+.card-container {
+  background-color: #f7f4ff; /* morado muy claro */
+  border-radius: 12px;
+  padding: 15px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px; /* adaptativo: ancho máximo */
+  height: min(80vh, 720px); /* limitar altura relativa a la ventana */
+  box-shadow: 0 8px 24px rgba(90, 60, 150, 0.15);
+  box-sizing: border-box;
+}
+
+/* Centrar el contenedor en la pantalla */
+html, body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f9;
+  padding: 20px; /* separación en móviles */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  min-height: 100vh;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d9c7ff;
+}
+
+.card-header .img-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background-color: #6b46c1; /* morado */
+}
+
+.card-header .text-chat {
+  color: #3c2c66;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* permite que el scroll suceda en messages-container */
+  min-height: 0; /* fix para flex 1 overflow */
+}
+
+.messages-container {
+  padding: 15px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* permite que el flex funcione con overflow */
+}
+
+/* Mensajes */
+.message-box {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  max-width: 85%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: flex;
+  align-items: center;
+}
+
+.message-box p {
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.message-box.left {
+  background-color: #ede7ff; /* morado pastel */
+  color: #2d2352;
+  font-size: 13px;
+  align-self: flex-start;
+}
+
+.message-box.left {
+  background-color: #ede7ff; /* morado pastel */
+  color: #2d2352;
+  font-size: 13px;
+  align-self: flex-start;
+}
+.message-box.right {
+  background-color: #6b46c1; /* morado sólido */
+  color: #fff;
+  font-size: 13px;
+  align-self: flex-end;
+}
+
+.message-input {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #d9c7ff;
+  background: rgba(255,255,255,0.9);
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  box-shadow: 0 -4px 12px rgba(90,60,150,0.04);
+}
+
+/* Form layout inside the input area */
+#chat-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.message-input .message-send {
+  flex: 1;
+  height: 48px;
+  min-height: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #c3a9ff;
+  resize: none;
+  background-color: #faf7ff;
+  color: #2d2352;
+}
+
+/* Make sure button doesn't get visually clipped by pseudo-element transforms */
+.message-input .learn-more {
+  flex: 0 0 auto;
+  position: relative;
+}
+.message-input .learn-more::before {
+  transform: translate3d(0, 0.35em, -1em);
+}
+
+/* Botón */
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+button.learn-more {
+  font-weight: 600;
+  color: #3c2c66;
+  text-transform: uppercase;
+  padding: 0.75em 1.5em;
+  background: #f1eaff;
+  border: 2px solid #c3a9ff;
+  border-radius: 0.75em;
+  transform-style: preserve-3d;
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.learn-more::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #e3d4ff;
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px #c3a9ff, 0 0.625em 0 0 #efe6ff;
+  transform: translate3d(0, 0.5em, -1em);
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button.learn-more:hover {
+  background: #e9deff;
+  transform: translate(0, 0.15em);
+}
+
+button.learn-more:hover::before {
+  box-shadow: 0 0 0 2px #c3a9ff, 0 0.5em 0 0 #efe6ff;
+  transform: translate3d(0, 0.35em, -1em);
+}
+
+button.learn-more:active {
+  background: #e9deff;
+  transform: translate(0em, 0.5em);
+}
+
+button.learn-more:active::before {
+  box-shadow: 0 0 0 2px #c3a9ff, 0 0 #efe6ff;
+  transform: translate3d(0, 0, -1em);
+}
